@@ -1,4 +1,4 @@
-package com.ontariotechu.sofe3980U;
+package com.ontariotechu.sofe3980u;
 
 public class BinaryAPIResult {
 

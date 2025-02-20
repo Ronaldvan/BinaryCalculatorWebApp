@@ -1,4 +1,4 @@
-package com.ontariotechu.sofe3980U;
+package com.ontariotechu.sofe3980u;
 
 import java.math.BigInteger;
 

@@ -1,4 +1,4 @@
-package com.ontariotechu.sofe3980U;
+package com.ontariotechu.sofe3980u;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

@@ -1,4 +1,4 @@
-package com.ontariotechu.sofe3980U;
+package com.ontariotechu.sofe3980u;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
