@@ -1,30 +1,65 @@
 package com.ontariotechu.sofe3980U;
 
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 public class BinaryAPIController {
 
-	@GetMapping("/add")
-	public String addString(@RequestParam(name="operand1", required=false, defaultValue="") String operand1,
-                       @RequestParam(name="operand2", required=false, defaultValue="") String operand2) {
-		Binary number1=new Binary (operand1);
-		Binary number2=new Binary (operand2);
-        return  Binary.add(number1,number2).getValue();
-		// http://localhost:8080/add?operand1=111&operand2=1010
-	}
-	
-	@GetMapping("/add_json")
-	public BinaryAPIResult addJSON(@RequestParam(name="operand1", required=false, defaultValue="") String operand1,
-                       @RequestParam(name="operand2", required=false, defaultValue="") String operand2) {
-		Binary number1=new Binary (operand1);
-		Binary number2=new Binary (operand2);
-        return  new BinaryAPIResult(number1,"add",number2,Binary.add(number1,number2));
-		// http://localhost:8080/add?operand1=111&operand2=1010
-	}
+    @GetMapping("/add")
+    public String add(@RequestParam(name = "operand1") String operand1,
+                      @RequestParam(name = "operand2") String operand2) {
+        int result = Integer.parseInt(operand1, 2) + Integer.parseInt(operand2, 2);
+        return Integer.toBinaryString(result);
+    }
 
+    @GetMapping("/add_json")
+    public BinaryAPIResult addJson(@RequestParam(name = "operand1") String operand1,
+                                   @RequestParam(name = "operand2") String operand2) {
+        int result = Integer.parseInt(operand1, 2) + Integer.parseInt(operand2, 2);
+        return new BinaryAPIResult(operand1, operand2, Integer.toBinaryString(result), "add");
+    }
+
+    @GetMapping("/multiply")
+    public String multiply(@RequestParam(name = "operand1") String operand1,
+                           @RequestParam(name = "operand2") String operand2) {
+        int result = Integer.parseInt(operand1, 2) * Integer.parseInt(operand2, 2);
+        return Integer.toBinaryString(result);
+    }
+
+    @GetMapping("/multiply_json")
+    public BinaryAPIResult multiplyJson(@RequestParam(name = "operand1") String operand1,
+                                       @RequestParam(name = "operand2") String operand2) {
+        int result = Integer.parseInt(operand1, 2) * Integer.parseInt(operand2, 2);
+        return new BinaryAPIResult(operand1, operand2, Integer.toBinaryString(result), "multiply");
+    }
+
+    @GetMapping("/and")
+    public String and(@RequestParam(name = "operand1") String operand1,
+                      @RequestParam(name = "operand2") String operand2) {
+        int result = Integer.parseInt(operand1, 2) & Integer.parseInt(operand2, 2);
+        return Integer.toBinaryString(result);
+    }
+
+    @GetMapping("/and_json")
+    public BinaryAPIResult andJson(@RequestParam(name = "operand1") String operand1,
+                                   @RequestParam(name = "operand2") String operand2) {
+        int result = Integer.parseInt(operand1, 2) & Integer.parseInt(operand2, 2);
+        return new BinaryAPIResult(operand1, operand2, Integer.toBinaryString(result), "and");
+    }
+
+    @GetMapping("/or")
+    public String or(@RequestParam(name = "operand1") String operand1,
+                     @RequestParam(name = "operand2") String operand2) {
+        int result = Integer.parseInt(operand1, 2) | Integer.parseInt(operand2, 2);
+        return Integer.toBinaryString(result);
+    }
+
+    @GetMapping("/or_json")
+    public BinaryAPIResult orJson(@RequestParam(name = "operand1") String operand1,
+                                  @RequestParam(name = "operand2") String operand2) {
+        int result = Integer.parseInt(operand1, 2) | Integer.parseInt(operand2, 2);
+        return new BinaryAPIResult(operand1, operand2, Integer.toBinaryString(result), "or");
+    }
 }
